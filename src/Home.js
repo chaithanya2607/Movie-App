@@ -1,5 +1,5 @@
 export function Home() {
     return (
-      <h1>Welcome to the Movie app 😊🎇🎇✨🎉🎉</h1>
+      <h1>🎉✨🎇😊Welcome to the Movie app 😊🎇✨🎉</h1>
     );
   }
