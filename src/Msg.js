@@ -1,8 +1,6 @@
 import { Counter } from "./Counter"
-
-
 export function Msg({name, pic}) {
-    return (
+      return (
       <div>
         <h1>Hello {name}</h1>
         <img className="profile-pic" src={pic} alt={name} />
@@ -10,3 +8,4 @@ export function Msg({name, pic}) {
       </div>
     );
   }
+  
