@@ -2,9 +2,9 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { API } from "./global";
 
-export function AddMovie() {
+export function AddMovie( { movieList, setMovieList}) {
+
   const [name, setName] = useState("");
   const [rating, setRating] = useState("");
   const [poster, setPoster] = useState("");
@@ -29,7 +29,9 @@ export function AddMovie() {
 
         <TextField onChange={(event) => setTrailer(event.target.value)}
           label="Trailer" variant="standard" />
-           <Button onClick={() => {
+
+        {/* newMovie = object */}
+        <Button onClick={() => {
           const newMovie = {
             name: name,
             poster: poster,
@@ -37,21 +39,15 @@ export function AddMovie() {
             summary: summary,
             trailer: trailer,
           };
-       
-          fetch(`${API}/movie`,{
-            method: "POST",
-            body: JSON.stringify(newMovie),
-            headers: {
-              "Content-Type": "application/json",
-            }
-          })
-          .then((data) => data.json())
-          .then(() => navigate("/movies"));
-               
+          //copy of movieList and add newMovie to it
+          setMovieList([...movieList, newMovie]);
+          navigate("/movies");
         }} 
           variant="contained" >Add Movie</Button>
     
+
       </div>
+
     </div>
   );
 }

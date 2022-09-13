@@ -11,8 +11,7 @@ const formValidationSchema = yup.object({
   .string()
   .min(8, "Need a longer Password 😃")
   .max(12, "Too much Password")
-  .required("Why not fill the password")
-  
+  .required("Why not fill the password"),
 })
 
 export function BasicForm() {

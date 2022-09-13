@@ -1,3 +1,5 @@
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 import { useState, useEffect } from "react";
 import { Movie } from "./Movie";
 import { API } from "./global";
@@ -8,10 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 
 export function MovieList() {
+  // const movieList = INTIAL_MOVIE_LIST;
   const [movieList, setMovieList] = useState([]);
   
  const getMovies =() => {
-  fetch(`${API}/movie`,{
+  fetch(`${API}/movies`,{
     method: "GET",
   })
   .then((data) => data.json())
@@ -19,6 +22,7 @@ export function MovieList() {
  }
 
   useEffect(() => getMovies(),[]);
+
   const navigate  = useNavigate();
 
   return (
@@ -30,7 +34,7 @@ export function MovieList() {
           deleteButton={
             <IconButton
             onClick={()=>{
-              fetch(`${API}/movie/${mv.id}`, {
+              fetch(`${API}/movies/${mv.id}`, {
                 method: "DELETE",}) 
                 .then(() =>getMovies());   
              }}color="error" >
@@ -39,7 +43,11 @@ export function MovieList() {
           }
           editButton={
             <IconButton
-            onClick={()=> navigate(`/movies/edit/${mv.id}`)} 
+            onClick={()=> navigate(`/movies/edit/${mv.id}`)}
+
+              // fetch(`${API}/movies/${mv.id}`, {
+              //   method: "DELETE",}) 
+              //   .then(() =>getMovies());   
             color="secondary">
               <EditIcon />
             </IconButton>
